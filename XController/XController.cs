@@ -316,10 +316,19 @@ namespace XController
         /// </summary>
         public event EventHandler ConnectionStatusChanged;
 
+        /// <summary>
+        /// Event that triggers when the trigger levers are moved
+        /// </summary>
         public event EventHandler TriggersMoved;
 
+        /// <summary>
+        /// Event that triggers when the left thumb stick is moved
+        /// </summary>
         public event EventHandler LeftThumbMoved;
 
+        /// <summary>
+        /// Event that triggers when the right thumb stick is moved
+        /// </summary>
         public event EventHandler RightThumbMoved;
 
         #endregion
