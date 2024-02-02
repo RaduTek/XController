@@ -50,14 +50,25 @@ namespace XController
         }
 
         /// <summary>
-        /// Scale a vector object (2d vector)
+        /// Multiply a vector with a scalar
         /// </summary>
         /// <param name="vector">Base vector</param>
         /// <param name="scalar">Scalar</param>
-        /// <returns></returns>
+        /// <returns>Scaled vector</returns>
         public static Vector operator *(Vector vector, double scalar)
         {
             return new Vector(vector.X * scalar, vector.Y * scalar);
+        }
+
+        /// <summary>
+        /// Divide a vector with a scalar
+        /// </summary>
+        /// <param name="vector">Base vector</param>
+        /// <param name="scalar">Scalar</param>
+        /// <returns>Scaled vector</returns>
+        public static Vector operator /(Vector vector, double scalar)
+        {
+            return new Vector(vector.X / scalar, vector.Y / scalar);
         }
     }
 
