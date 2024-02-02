@@ -32,6 +32,15 @@ namespace XController
         }
 
         /// <summary>
+        /// Gets the magnitude of the vector
+        /// </summary>
+        /// <returns>Magnitude as double</returns>
+        public double Magnitude()
+        {
+            return Math.Sqrt(X * X + Y * Y);
+        }
+
+        /// <summary>
         /// Gets a string representation of the object
         /// </summary>
         /// <returns>A string with X and Y values</returns>
