@@ -133,8 +133,8 @@ namespace XController
         int _pollingInterval = 10;
         bool _enablePolling = true;
 
-        double _leftThumbDeadZone = 0.1;
-        double _rightThumbDeadZone = 0.1;
+        double _leftThumbDeadZone = 0.15;
+        double _rightThumbDeadZone = 0.15;
 
         #endregion
 
@@ -429,7 +429,7 @@ namespace XController
         /// <param name="gamepad">Gamepad state</param>
         private void UpdateThumbStickState(Gamepad gamepad)
         {
-            Vector newValue = GetThumbValue(gamepad.LeftThumbX, gamepad.LeftThumbY);
+            Vector newValue = GetThumbValueDeadzone(gamepad.LeftThumbX, gamepad.LeftThumbY, _leftThumbDeadZone);
 
             if (LeftThumb.X != newValue.X || LeftThumb.Y != newValue.Y)
             {
@@ -437,7 +437,7 @@ namespace XController
                 LeftThumbMoved?.Invoke(this, EventArgs.Empty);
             }
 
-            newValue = GetThumbValue(gamepad.RightThumbX, gamepad.RightThumbY);
+            newValue = GetThumbValueDeadzone(gamepad.RightThumbX, gamepad.RightThumbY, _rightThumbDeadZone);
 
             if (RightThumb.X != newValue.X || RightThumb.Y != newValue.Y)
             {
@@ -451,13 +451,25 @@ namespace XController
         /// </summary>
         /// <param name="x">X offset</param>
         /// <param name="y">Y offset</param>
-        /// <returns>ThumbValue object</returns>
+        /// <returns>Vector coordinates</returns>
         private Vector GetThumbValue(short x, short y)
         {
             double dX = x / 32768.0;
             double dY = y / 32768.0;
 
             return new Vector(dX, dY);
+        }
+
+        /// <summary>
+        /// Get the thumb value from raw X Y values with deadzone calculation
+        /// </summary>
+        /// <param name="x">X offset</param>
+        /// <param name="y">Y offset</param>
+        /// <param name="deadzone">Deadzone ratio</param>
+        /// <returns>Vector coordinates</returns>
+        private Vector GetThumbValueDeadzone(short x, short y, double deadzone)
+        {
+            return Deadzone.Hybrid(GetThumbValue(x, y), deadzone);
         }
 
         /// <summary>
