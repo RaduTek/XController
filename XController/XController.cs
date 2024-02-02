@@ -375,6 +375,7 @@ namespace XController
             Gamepad gamepad = state.Gamepad;
 
             UpdateButtonState(gamepad);
+            UpdateTriggerState(gamepad);
         }
 
         /// <summary>
@@ -397,6 +398,21 @@ namespace XController
             }
 
             Buttons = newState;
+        }
+
+        /// <summary>
+        /// Update trigger value state
+        /// </summary>
+        /// <param name="gamepad">Gamepad state</param>
+        private void UpdateTriggerState(Gamepad gamepad)
+        {
+            TriggerValue newTriggers = new TriggerValue(gamepad.LeftTrigger / 255.0, gamepad.RightTrigger / 255.0);
+
+            if (Triggers.Left != newTriggers.Left || Triggers.Right != newTriggers.Right)
+            {
+                Triggers = newTriggers;
+                TriggersMoved?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         /// <summary>
