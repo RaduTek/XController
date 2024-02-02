@@ -5,9 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XControllerTest"
         mc:Ignorable="d"
-        Title="XController Test Application" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
-    <TextBox Name="LogTextBox" Margin="4" TextWrapping="Wrap" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+        Title="XController Test Application" Height="541" Width="600"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+        SnapsToDevicePixels="True">
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="4" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0">
+            <TabItem Header="Analog">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Left Trigger</Label>
+                    <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Left Thumb</Label>
+                    <Label Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center">Right Thumb</Label>
+                    <Label Grid.Row="0" Grid.Column="6" HorizontalAlignment="Center">Right Trigger</Label>
+
+                    <Border Grid.Row="2" Grid.Column="0" BorderBrush="#aaa" BorderThickness="1" HorizontalAlignment="Center" Width="20" Padding="1">
+                        <Rectangle VerticalAlignment="Bottom" Height="100" Name="LeftTriggerBar">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                                    <GradientStop Offset="0" Color="#6430e6" />
+                                    <GradientStop Offset="1" Color="#3048e6" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="6" BorderBrush="#aaa" BorderThickness="1" HorizontalAlignment="Center" Width="20" Padding="1">
+                        <Rectangle VerticalAlignment="Bottom" Height="100" Name="RightTriggerBar">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                                    <GradientStop Offset="0" Color="#2597a8" />
+                                    <GradientStop Offset="1" Color="#25a848" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="2" BorderBrush="#aaa" BorderThickness="1" Padding="4">
+                        <Canvas>
+                            <Ellipse Width="6" Height="6" Fill="#3048e6" Name="LeftThumbPoint"></Ellipse>
+                        </Canvas>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="4" BorderBrush="#aaa" BorderThickness="1" Padding="4">
+                        <Canvas>
+                            <Ellipse Width="6" Height="6" Fill="#25a848" Name="RightThumbPoint"></Ellipse>
+                        </Canvas>
+                    </Border>
+
+                    <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Name="LeftTriggerLabel">0.000</Label>
+                    <Label Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Name="LeftThumbLabel">X: 0.000, Y: 0.000</Label>
+                    <Label Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" Name="RightThumbLabel">X: 0.000, Y: 0.000</Label>
+                    <Label Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" Name="RightTriggerLabel">0.000</Label>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Buttons">
+                <Grid/>
+            </TabItem>
+        </TabControl>
+
+        <TextBox Grid.Row="2" Name="LogTextBox" TextWrapping="Wrap" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"
          ScrollViewer.VerticalScrollBarVisibility="Auto"
          ScrollViewer.CanContentScroll="True"/>
+    </Grid>
 </Window>
