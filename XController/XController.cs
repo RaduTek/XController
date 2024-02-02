@@ -17,6 +17,76 @@ namespace XController
     }
 
     /// <summary>
+    /// Thumb value structure
+    /// </summary>
+    public struct ThumbValue
+    {
+        /// <summary>
+        /// Horizontal coordinates relative to the center
+        /// </summary>
+        public double X;
+
+        /// <summary>
+        /// Vertical coordinates relative to the center
+        /// </summary>
+        public double Y;
+
+        /// <summary>
+        /// Create a new instance of the ThumbValue structure
+        /// </summary>
+        public ThumbValue(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        /// <summary>
+        /// Gets a string representation of the object
+        /// </summary>
+        /// <returns>A string with X and Y values</returns>
+        public override string ToString()
+        {
+            return $"X: {X:0.000}, Y: {Y:0.000}";
+        }
+    }
+
+    /// <summary>
+    /// Trigger value structure
+    /// </summary>
+    public struct TriggerValue
+    {
+        /// <summary>
+        /// Value of the left trigger
+        /// </summary>
+        public double Left;
+
+        /// <summary>
+        /// Value of the right trigger
+        /// </summary>
+        public double Right;
+
+        /// <summary>
+        /// Create a new instance of the TriggerValue structure
+        /// </summary>
+        /// <param name="left">Left trigger value</param>
+        /// <param name="right">Right trigger value</param>
+        public TriggerValue(double left, double right)
+        {
+            Left = left;
+            Right = right;
+        }
+
+        /// <summary>
+        /// Gets a string representation of the object
+        /// </summary>
+        /// <returns>A string with Left and Right values</returns>
+        public override string ToString()
+        {
+            return $"Left: {Left:0.000}, Right: {Right:0.000}";
+        }
+    }
+
+    /// <summary>
     /// Event argument class for a Buttons pressed type event
     /// </summary>
     public class ButtonsPressedEventArgs : EventArgs
