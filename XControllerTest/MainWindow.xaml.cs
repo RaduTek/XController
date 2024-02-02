@@ -62,7 +62,6 @@ namespace XControllerTest
 
         private void Controller_TriggersMoved(object sender, EventArgs e)
         {
-            LogTextLine($"Triggers moved: {controller.Triggers}");
             LeftTriggerLabel.Content = controller.Triggers.Left.ToString("0.000");
             SetBarHeightRelative(LeftTriggerBar, controller.Triggers.Left);
             RightTriggerLabel.Content = controller.Triggers.Right.ToString("0.000");
