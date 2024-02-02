@@ -91,24 +91,6 @@ namespace XController
         #region "Private Variables"
 
         UserIndex _userIndex;
-        bool _connected = false;
-        Buttons _buttons = new Buttons()
-        {
-            A = false,
-            B = false,
-            X = false,
-            Y = false,
-            LBumper = false,
-            RBumper = false,
-            LThumb = false,
-            RThumb = false,
-            Up = false,
-            Down = false,
-            Left = false,
-            Right = false,
-            Back = false,
-            Start = false
-        };
 
         SharpDX.XInput.Controller _controller = null;
         private readonly Timer _timer = null;
@@ -124,6 +106,24 @@ namespace XController
         /// </summary>
         public Controller(UserIndex userIndex = UserIndex.One)
         {
+            Buttons = new Buttons()
+            {
+                A = false,
+                B = false,
+                X = false,
+                Y = false,
+                LBumper = false,
+                RBumper = false,
+                LThumb = false,
+                RThumb = false,
+                Up = false,
+                Down = false,
+                Left = false,
+                Right = false,
+                Back = false,
+                Start = false
+            };
+
             _userIndex = userIndex;
             _controller = new SharpDX.XInput.Controller((SharpDX.XInput.UserIndex)userIndex);
 
@@ -141,7 +141,7 @@ namespace XController
         /// </summary>
         public bool Connected
         {
-            get { return _connected; }
+            get; private set;
         }
 
 
@@ -164,7 +164,7 @@ namespace XController
         /// </summary>
         public Buttons Buttons
         {
-            get { return _buttons; }
+            get; private set;
         }
 
         /// <summary>
@@ -258,13 +258,13 @@ namespace XController
         /// </summary>
         private void UpdateControllerValues()
         {
-            if (_connected != _controller.IsConnected)
+            if (Connected != _controller.IsConnected)
             {
-            _connected = _controller.IsConnected;
+                Connected = _controller.IsConnected;
                 ConnectionStatusChanged?.Invoke(this, EventArgs.Empty);
             }
 
-            if (!_connected)
+            if (!Connected)
             {
                 return;
             }
@@ -283,18 +283,18 @@ namespace XController
         {
             Buttons newState = GamepadToButtons(gamepad);
 
-            int result = ButtonsTools.CompareButtonStates(_buttons, newState);
+            int result = ButtonsTools.CompareButtonStates(Buttons, newState);
 
             if (result < 0)
             {
-                ButtonsReleased?.Invoke(this, new ButtonsReleasedEventArgs(_buttons, newState));
+                ButtonsReleased?.Invoke(this, new ButtonsReleasedEventArgs(Buttons, newState));
             }
             else if (result > 0)
             {
-                ButtonsPressed?.Invoke(this, new ButtonsPressedEventArgs(_buttons, newState));
+                ButtonsPressed?.Invoke(this, new ButtonsPressedEventArgs(Buttons, newState));
             }
 
-            _buttons = newState;
+            Buttons = newState;
         }
 
         /// <summary>
