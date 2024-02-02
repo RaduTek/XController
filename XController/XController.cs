@@ -178,6 +178,9 @@ namespace XController
         int _pollingInterval = 10;
         bool _enablePolling = true;
 
+        double _leftThumbDeadZone = 0.1;
+        double _rightThumbDeadZone = 0.1;
+
         #endregion
 
         #region "Constructor"
@@ -291,21 +294,51 @@ namespace XController
 
         /// <summary>
         /// Gets the value of the left thumb
-        /// Range: 0 to 1
+        /// Range: -1 to 1
         /// </summary>
-        public ThumbValue LeftThumb
+        public Vector LeftThumb
         {
             get; private set;
-        } = new ThumbValue();
+        } = new Vector();
+
+        /// <summary>
+        /// Gets or sets the dead zone ratio of the left thumb
+        /// Range: 0 to 1
+        /// </summary>
+        public double LeftThumbDeadzone
+        {
+            get { return _leftThumbDeadZone; }
+            set
+            {
+                if (value < 0 || value > 1)
+                    throw new ArgumentOutOfRangeException("value");
+                _leftThumbDeadZone = value;
+            }
+        }
 
         /// <summary>
         /// Gets the value of the right thumb
-        /// Range: 0 to 1
+        /// Range: -1 to 1
         /// </summary>
-        public ThumbValue RightThumb
+        public Vector RightThumb
         {
             get; private set;
-        } = new ThumbValue();
+        } = new Vector();
+
+        /// <summary>
+        /// Gets or sets the dead zone ratio of the right thumb
+        /// Range: 0 to 1
+        /// </summary>
+        public double RightThumbDeadzone
+        {
+            get { return _rightThumbDeadZone; }
+            set
+            {
+                if (value < 0 || value > 1)
+                    throw new ArgumentOutOfRangeException("value");
+                _rightThumbDeadZone = value;
+            }
+        }
 
         #endregion
 
