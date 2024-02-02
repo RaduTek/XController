@@ -230,14 +230,6 @@ namespace XController
         }
 
         /// <summary>
-        /// Gets the button press state
-        /// </summary>
-        public Buttons Buttons
-        {
-            get; private set;
-        }
-
-        /// <summary>
         /// Gets or sets the controller polling interval
         /// Value cannot be less than 1
         /// </summary>
@@ -269,6 +261,41 @@ namespace XController
                 UpdateTimerSettings();
             }
         }
+
+        /// <summary>
+        /// Gets the button press state
+        /// </summary>
+        public Buttons Buttons
+        {
+            get; private set;
+        }
+
+        /// <summary>
+        /// Gets the value of the triggers
+        /// Range: 0 to 1
+        /// </summary>
+        public TriggerValue Triggers
+        {
+            get; private set;
+        } = new TriggerValue();
+
+        /// <summary>
+        /// Gets the value of the left thumb
+        /// Range: 0 to 1
+        /// </summary>
+        public ThumbValue LeftThumb
+        {
+            get; private set;
+        } = new ThumbValue();
+
+        /// <summary>
+        /// Gets the value of the right thumb
+        /// Range: 0 to 1
+        /// </summary>
+        public ThumbValue RightThumb
+        {
+            get; private set;
+        } = new ThumbValue();
 
         #endregion
 
