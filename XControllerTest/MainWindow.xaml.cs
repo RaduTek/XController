@@ -40,7 +40,7 @@ namespace XControllerTest
 
         private void Controller_ButtonsReleased(object sender, ButtonsReleasedEventArgs e)
         {
-            LogTextLine("Buttons released: " + e.JustReleased.ToString());
+            LogTextLine("Buttons released: " + e.Buttons.ToString());
         }
 
         private void LogTextLine(string s)
@@ -52,7 +52,7 @@ namespace XControllerTest
 
         private void Controller_ButtonsPressed(object sender, ButtonsPressedEventArgs e)
         {
-            LogTextLine("Buttons pressed: " + e.JustPressed.ToString());
+            LogTextLine("Buttons pressed: " + e.Buttons.ToString());
         }
     }
 }
