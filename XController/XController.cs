@@ -428,6 +428,7 @@ namespace XController
 
             UpdateButtonState(gamepad);
             UpdateTriggerState(gamepad);
+            UpdateThumbStickState(gamepad);
         }
 
         /// <summary>
@@ -465,6 +466,43 @@ namespace XController
                 Triggers = newTriggers;
                 TriggersMoved?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        /// <summary>
+        /// Update thumb stick values
+        /// </summary>
+        /// <param name="gamepad">Gamepad state</param>
+        private void UpdateThumbStickState(Gamepad gamepad)
+        {
+            Vector newValue = GetThumbValue(gamepad.LeftThumbX, gamepad.LeftThumbY);
+
+            if (LeftThumb.X != newValue.X || LeftThumb.Y != newValue.Y)
+            {
+                LeftThumb = newValue;
+                LeftThumbMoved?.Invoke(this, EventArgs.Empty);
+            }
+
+            newValue = GetThumbValue(gamepad.RightThumbX, gamepad.RightThumbY);
+
+            if (RightThumb.X != newValue.X || RightThumb.Y != newValue.Y)
+            {
+                RightThumb = newValue;
+                RightThumbMoved?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Get the thumb value from raw X Y values
+        /// </summary>
+        /// <param name="x">X offset</param>
+        /// <param name="y">Y offset</param>
+        /// <returns>ThumbValue object</returns>
+        private Vector GetThumbValue(short x, short y)
+        {
+            double dX = x / 32768.0;
+            double dY = y / 32768.0;
+
+            return new Vector(dX, dY);
         }
 
         /// <summary>
