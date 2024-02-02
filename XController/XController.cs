@@ -205,8 +205,14 @@ namespace XController
 
         #region "Public Events"
 
+        /// <summary>
+        /// Event that triggers when a button is pressed
+        /// </summary>
         public event EventHandler<ButtonsPressedEventArgs> ButtonsPressed;
 
+        /// <summary>
+        /// Event that triggers when a button is released
+        /// </summary>
         public event EventHandler<ButtonsReleasedEventArgs> ButtonsReleased;
 
         #endregion
@@ -243,6 +249,9 @@ namespace XController
             };
         }
 
+        /// <summary>
+        /// Update controller values
+        /// </summary>
         private void UpdateControllerValues()
         {
             _connected = _controller.IsConnected;
