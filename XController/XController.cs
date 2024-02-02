@@ -17,9 +17,9 @@ namespace XController
     }
 
     /// <summary>
-    /// Thumb value structure
+    /// 2D vector structure
     /// </summary>
-    public struct ThumbValue
+    public struct Vector
     {
         /// <summary>
         /// Horizontal coordinates relative to the center
@@ -32,9 +32,9 @@ namespace XController
         public double Y;
 
         /// <summary>
-        /// Create a new instance of the ThumbValue structure
+        /// Create a new instance of the Vector structure
         /// </summary>
-        public ThumbValue(double x, double y)
+        public Vector(double x, double y)
         {
             X = x;
             Y = y;
@@ -48,6 +48,17 @@ namespace XController
         {
             return $"X: {X:0.000}, Y: {Y:0.000}";
         }
+
+        /// <summary>
+        /// Scale a vector object (2d vector)
+        /// </summary>
+        /// <param name="vector">Base vector</param>
+        /// <param name="scalar">Scalar</param>
+        /// <returns></returns>
+        public static Vector operator *(Vector vector, double scalar)
+        {
+            return new Vector(vector.X * scalar, vector.Y * scalar);
+    }
     }
 
     /// <summary>
