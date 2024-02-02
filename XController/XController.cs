@@ -34,7 +34,7 @@ namespace XController
         /// <summary>
         /// Buttons that are pressed only in the new state
         /// </summary>
-        public Buttons JustPressed { get; private set; }
+        public Buttons Buttons { get; private set; }
 
         /// <summary>
         /// Create a new event argument object
@@ -45,7 +45,7 @@ namespace XController
         {
             PreviousState = previousState;
             NewState = newState;
-            JustPressed = ButtonsTools.ButtonsInNewState(previousState, newState);
+            Buttons = ButtonsTools.ButtonsInNewState(previousState, newState);
         }
     }
 
@@ -67,7 +67,7 @@ namespace XController
         /// <summary>
         /// Buttons that were pressed only in the previous state
         /// </summary>
-        public Buttons JustReleased { get; private set; }
+        public Buttons Buttons { get; private set; }
 
         /// <summary>
         /// Create a new event argument object
@@ -78,7 +78,7 @@ namespace XController
         {
             PreviousState = previousState;
             NewState = newState;
-            JustReleased = ButtonsTools.ButtonsInPreviousState(previousState, newState);
+            Buttons = ButtonsTools.ButtonsInPreviousState(previousState, newState);
         }
     }
 
