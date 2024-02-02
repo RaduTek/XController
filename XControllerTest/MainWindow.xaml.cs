@@ -37,6 +37,12 @@ namespace XControllerTest
             controller.ButtonsPressed += Controller_ButtonsPressed;
             controller.ButtonsReleased += Controller_ButtonsReleased;
             controller.ConnectionStatusChanged += Controller_ConnectionStatusChanged;
+            controller.TriggersMoved += Controller_TriggersMoved;
+        }
+
+        private void Controller_TriggersMoved(object sender, EventArgs e)
+        {
+            LogTextLine($"Triggers moved: {controller.Triggers}");
         }
 
         private void Controller_ConnectionStatusChanged(object sender, EventArgs e)
@@ -46,7 +52,7 @@ namespace XControllerTest
 
         private void Controller_ButtonsReleased(object sender, ButtonsReleasedEventArgs e)
         {
-            LogTextLine($"Buttons released: {e.Buttons.ToString()}");
+            LogTextLine($"Buttons released: {e.Buttons}");
         }
 
         private void LogTextLine(string s)
