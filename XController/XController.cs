@@ -214,6 +214,11 @@ namespace XController
         /// </summary>
         public event EventHandler<ButtonsReleasedEventArgs> ButtonsReleased;
 
+        /// <summary>
+        /// Event that triggers when connection status changes
+        /// </summary>
+        public event EventHandler ConnectionStatusChanged;
+
         #endregion
 
         #region "Private Methods"
@@ -253,7 +258,11 @@ namespace XController
         /// </summary>
         private void UpdateControllerValues()
         {
+            if (_connected != _controller.IsConnected)
+            {
             _connected = _controller.IsConnected;
+                ConnectionStatusChanged?.Invoke(this, EventArgs.Empty);
+            }
 
             if (!_connected)
             {
