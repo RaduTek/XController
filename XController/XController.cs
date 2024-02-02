@@ -126,7 +126,6 @@ namespace XController
         {
             _userIndex = userIndex;
             _controller = new SharpDX.XInput.Controller((SharpDX.XInput.UserIndex)userIndex);
-            UpdateControllerValues();
 
             _timer = new Timer();
             _timer.Tick += PollingTimer_Tick;
