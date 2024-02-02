@@ -36,11 +36,17 @@ namespace XControllerTest
             controller = new Controller();
             controller.ButtonsPressed += Controller_ButtonsPressed;
             controller.ButtonsReleased += Controller_ButtonsReleased;
+            controller.ConnectionStatusChanged += Controller_ConnectionStatusChanged;
+        }
+
+        private void Controller_ConnectionStatusChanged(object sender, EventArgs e)
+        {
+            LogTextLine($"Controller {(controller.Connected ? "connected" : "disconnected")}");
         }
 
         private void Controller_ButtonsReleased(object sender, ButtonsReleasedEventArgs e)
         {
-            LogTextLine("Buttons released: " + e.Buttons.ToString());
+            LogTextLine($"Buttons released: {e.Buttons.ToString()}");
         }
 
         private void LogTextLine(string s)
