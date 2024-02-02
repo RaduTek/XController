@@ -66,5 +66,18 @@ namespace XController
     /// </summary>
     internal static class Utility
     {
+        /// <summary>
+        /// Maps a value from one range to another
+        /// </summary>
+        /// <param name="value">Value to map</param>
+        /// <param name="oldMin">Source lower bound</param>
+        /// <param name="oldMax">Source upper bound</param>
+        /// <param name="newMin">New lower bound</param>
+        /// <param name="newMax">New upper bound</param>
+        /// <returns>Value in new range as double</returns>
+        public static double Map(double value, double oldMin, double oldMax, double newMin, double newMax)
+        {
+            return newMin + (newMax - newMin) * (value - oldMin) / (oldMax - oldMin);
+        }
     }
 }
