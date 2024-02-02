@@ -316,10 +316,15 @@ namespace XController
         /// </summary>
         public event EventHandler ConnectionStatusChanged;
 
+        public event EventHandler TriggersMoved;
+
+        public event EventHandler LeftThumbMoved;
+
+        public event EventHandler RightThumbMoved;
+
         #endregion
 
         #region "Private Methods"
-
 
         /// <summary>
         /// Map a Gamepad object to a Buttons object
