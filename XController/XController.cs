@@ -264,6 +264,15 @@ namespace XController
             State state = _controller.GetState();
             Gamepad gamepad = state.Gamepad;
 
+            UpdateButtonState(gamepad);
+        }
+
+        /// <summary>
+        /// Update button state
+        /// </summary>
+        /// <param name="gamepad">Gamepad state</param>
+        private void UpdateButtonState(Gamepad gamepad)
+        {
             Buttons newState = GamepadToButtons(gamepad);
 
             int result = ButtonsTools.CompareButtonStates(_buttons, newState);
