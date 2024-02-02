@@ -225,7 +225,6 @@ namespace XController
             {
                 _userIndex = value;
                 _controller = new SharpDX.XInput.Controller((SharpDX.XInput.UserIndex)value);
-                UpdateControllerValues();
             }
         }
 
