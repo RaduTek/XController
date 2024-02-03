@@ -143,7 +143,7 @@ namespace XController
         /// <summary>
         /// Initializes a new instance of the XController class
         /// </summary>
-        public Controller(UserIndex userIndex = UserIndex.One)
+        public Controller(UserIndex userIndex = UserIndex.Any)
         {
             Buttons = new Buttons()
             {
