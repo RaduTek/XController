@@ -90,5 +90,18 @@ namespace XController
         {
             return newMin + (newMax - newMin) * (value - oldMin) / (oldMax - oldMin);
         }
+
+        /// <summary>
+        /// Append string to StringBuilder if value is true
+        /// </summary>
+        /// <param name="stringBuilder">StringBuilder object</param>
+        /// <param name="value">Boolean condition</param>
+        /// <param name="s">String to append</param>
+        /// <param name="separator">Separator to append</param>
+        public static void AppendIfTrue(StringBuilder stringBuilder, bool value, string s, string separator = ", ")
+        {
+            if (value)
+                stringBuilder.Append(s).Append(separator);
+        }
     }
 }

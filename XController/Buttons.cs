@@ -21,32 +21,26 @@ namespace XController
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            AppendIfTrue(stringBuilder, A, nameof(A));
-            AppendIfTrue(stringBuilder, B, nameof(B));
-            AppendIfTrue(stringBuilder, X, nameof(X));
-            AppendIfTrue(stringBuilder, Y, nameof(Y));
-            AppendIfTrue(stringBuilder, LBumper, nameof(LBumper));
-            AppendIfTrue(stringBuilder, RBumper, nameof(RBumper));
-            AppendIfTrue(stringBuilder, LThumb, nameof(LThumb));
-            AppendIfTrue(stringBuilder, RThumb, nameof(RThumb));
-            AppendIfTrue(stringBuilder, Up, nameof(Up));
-            AppendIfTrue(stringBuilder, Down, nameof(Down));
-            AppendIfTrue(stringBuilder, Left, nameof(Left));
-            AppendIfTrue(stringBuilder, Right, nameof(Right));
-            AppendIfTrue(stringBuilder, Back, nameof(Back));
-            AppendIfTrue(stringBuilder, Start, nameof(Start));
+            Utility.AppendIfTrue(stringBuilder, A, nameof(A));
+            Utility.AppendIfTrue(stringBuilder, B, nameof(B));
+            Utility.AppendIfTrue(stringBuilder, X, nameof(X));
+            Utility.AppendIfTrue(stringBuilder, Y, nameof(Y));
+            Utility.AppendIfTrue(stringBuilder, LBumper, nameof(LBumper));
+            Utility.AppendIfTrue(stringBuilder, RBumper, nameof(RBumper));
+            Utility.AppendIfTrue(stringBuilder, LThumb, nameof(LThumb));
+            Utility.AppendIfTrue(stringBuilder, RThumb, nameof(RThumb));
+            Utility.AppendIfTrue(stringBuilder, Up, nameof(Up));
+            Utility.AppendIfTrue(stringBuilder, Down, nameof(Down));
+            Utility.AppendIfTrue(stringBuilder, Left, nameof(Left));
+            Utility.AppendIfTrue(stringBuilder, Right, nameof(Right));
+            Utility.AppendIfTrue(stringBuilder, Back, nameof(Back));
+            Utility.AppendIfTrue(stringBuilder, Start, nameof(Start));
 
             // Remove the trailing ", " if any
             if (stringBuilder.Length >= 2)
                 stringBuilder.Length -= 2;
 
             return stringBuilder.ToString();
-        }
-
-        private void AppendIfTrue(StringBuilder stringBuilder, bool value, string name)
-        {
-            if (value)
-                stringBuilder.Append(name).Append(", ");
         }
     }
 
