@@ -133,8 +133,8 @@ namespace XController
         int _pollingInterval = 10;
         bool _enablePolling = true;
 
-        double _leftThumbDeadZone = 0.15;
-        double _rightThumbDeadZone = 0.15;
+        double _leftDeadZone = 0.15;
+        double _rightDeadZone = 0.15;
 
         #endregion
 
@@ -260,14 +260,14 @@ namespace XController
         /// Gets or sets the dead zone ratio of the left thumb
         /// Range: 0 to 1
         /// </summary>
-        public double LeftThumbDeadzone
+        public double LeftDeadzone
         {
-            get { return _leftThumbDeadZone; }
+            get { return _leftDeadZone; }
             set
             {
                 if (value < 0 || value > 1)
                     throw new ArgumentOutOfRangeException("value");
-                _leftThumbDeadZone = value;
+                _leftDeadZone = value;
             }
         }
 
@@ -284,14 +284,14 @@ namespace XController
         /// Gets or sets the dead zone ratio of the right thumb
         /// Range: 0 to 1
         /// </summary>
-        public double RightThumbDeadzone
+        public double RightDeadzone
         {
-            get { return _rightThumbDeadZone; }
+            get { return _rightDeadZone; }
             set
             {
                 if (value < 0 || value > 1)
                     throw new ArgumentOutOfRangeException("value");
-                _rightThumbDeadZone = value;
+                _rightDeadZone = value;
             }
         }
 
@@ -429,7 +429,7 @@ namespace XController
         /// <param name="gamepad">Gamepad state</param>
         private void UpdateThumbStickState(Gamepad gamepad)
         {
-            Vector newValue = GetThumbValueDeadzone(gamepad.LeftThumbX, gamepad.LeftThumbY, _leftThumbDeadZone);
+            Vector newValue = GetThumbValueDeadzone(gamepad.LeftThumbX, gamepad.LeftThumbY, _leftDeadZone);
 
             if (LeftThumb.X != newValue.X || LeftThumb.Y != newValue.Y)
             {
@@ -437,7 +437,7 @@ namespace XController
                 LeftThumbMoved?.Invoke(this, EventArgs.Empty);
             }
 
-            newValue = GetThumbValueDeadzone(gamepad.RightThumbX, gamepad.RightThumbY, _rightThumbDeadZone);
+            newValue = GetThumbValueDeadzone(gamepad.RightThumbX, gamepad.RightThumbY, _rightDeadZone);
 
             if (RightThumb.X != newValue.X || RightThumb.Y != newValue.Y)
             {
