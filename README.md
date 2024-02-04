@@ -160,3 +160,9 @@ public Controller(UserIndex userIndex = UserIndex.Any)
     ...
 }
 ```
+
+## Test application
+
+Included is also the [XControllerTest](XControllerTest/) WPF app that showcases the use of the library.
+
+![XControllerTest screenshot](images/XControllerTest.png)
