@@ -38,7 +38,7 @@ namespace XControllerTest
             SetBarHeightRelative(RightTriggerBar, 0);
 
             stopwatch = Stopwatch.StartNew();
-            controller = new Controller();
+            controller = new Controller(UserIndex.One);
             controller.ButtonsPressed += Controller_ButtonsPressed;
             controller.ButtonsReleased += Controller_ButtonsReleased;
             controller.ConnectionStatusChanged += Controller_ConnectionStatusChanged;
