@@ -14,8 +14,12 @@ The library also implements deadzones for the thumb sticks. Based on code from h
 ## Example
 
 ```C#
-// Initializes a new Controller object, with UserIndex = Any (by default)
-Controller controller = new Controller();
+using XController;
+
+...
+
+// Initializes a new Controller object, with UserIndex = One
+Controller controller = new Controller(UserIndex.One);
 
 // Prints out the pressed buttons
 Console.WriteLine(controller.Buttons.ToString());
@@ -135,6 +139,14 @@ The following information applies for both `ButtonsPressedEventArgs` and `Button
 ## UserIndex enum
 
 The `UserIndex` enum defines the user index to be chosen for the controller through the XInput API.
+
+Available values:
+
+-   `Any` = 0xFF (byte.MaxValue)
+-   `One` = 0
+-   `Two` = 1
+-   `Three` = 3
+-   `Four` = 4
 
 `XController.Controller.UserIndex` is equivalent to `SharpDX.XInput.UserIndex` and a variable of one type can be directly type casted into the other type.
 
